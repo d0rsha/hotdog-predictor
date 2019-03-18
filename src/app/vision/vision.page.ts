@@ -68,7 +68,9 @@ import { LoadingController, ActionSheetController } from '@ionic/angular';
     // Show loader
     console.log('Clicked!');
     const options: CameraOptions = {
-      quality: 100,
+      quality: 60,
+      allowEdit: true,
+      targetHeight: 300,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
