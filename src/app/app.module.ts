@@ -13,9 +13,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 
-import { Camera } from '@ionic-native/camera';
-import { HomePage } from './home/home.page';
-import { VisionPage } from './vision/vision.page';
+import { Camera } from '@ionic-native/camera/ngx';
+import { FirestorageServiceService } from './services/firestorage-service.service';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -27,12 +29,16 @@ import { VisionPage } from './vision/vision.page';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    FirestorageServiceService,
+    WebView,
+    ImagePicker
+
   ],
   bootstrap: [AppComponent]
 })
