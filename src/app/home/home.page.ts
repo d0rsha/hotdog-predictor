@@ -69,31 +69,12 @@ export class HomePage {
     this.fsService.uploadImage(image, token)
       .then(async url => {
         this.image = this.fsService.getUrl(token) // 'data:image/jpg;base64,' + image;
-        console.log(token)
 
         this.afs.collection('photos').auditTrail().subscribe(console.log)
+
         // Make a reference to the future location of the firestore document
-        const photoRef = this.afs.collection('photos').doc(token); // , ref => ref.where('id', '==', token));
+        const photoRef = this.afs.collection('photos').doc(token);
         this.result$ = photoRef.valueChanges();
-        console.log(photoRef)
-        /*         this.result$ = this.items.subscribe(arr => {
-                  console.log(arr);
-                  return arr[0];
-                })
-        
-                // Firestore observable, dismiss loader when data is available
-                this.result$ = photoRef.valueChanges().pipe(
-                  take(1),
-                  map(post => {
-                    if (post) {
-                      console.log(post)
-                      return post
-                    } else {
-                      console.log(post)
-                      return null
-                    }
-                  })
-                ) */
 
         const toast = await this.toastCtrl.create({
           message: 'Image was updated successfully',
