@@ -3,9 +3,7 @@ import { ImagePicker } from '@ionic-native/image-picker/ngx';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import { FirestorageServiceService } from '../services/firestorage-service.service';
 import { ToastController, LoadingController } from '@ionic/angular';
-import { AngularFireStorage } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
-import { take, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -55,6 +53,7 @@ export class HomePage {
       message: 'Running prediction...',
       duration: 2000
     });
+    loading.present()
     this.progress = true;
     // Convert to base64
     image = this.webview.convertFileSrc(image);
