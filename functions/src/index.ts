@@ -40,7 +40,26 @@ export const imageTagger = functions.storage
 
         // Map the data to desired format
         const labels = results[0].labelAnnotations.map((obj: { description: any; }) => obj.description);
-        const hotdog = labels.includes('hot dog')
 
-        return docRef.set({ id, hotdog, labels })
+        let hotdog = false;
+
+        const hots = labels.filter((word: { toLowerCase: () => { includes: (arg0: string) => void; }; }) => word.toLowerCase().includes('hot'));
+        const dogs = labels.filter((word: { toLowerCase: () => { includes: (arg0: string) => void; }; }) => word.toLowerCase().includes('dog'));
+        const matches = Array<string>();
+
+        hots.forEach((e1: string) => dogs.forEach((e2: string) => {
+            {
+                if (e1 === e2) {
+                    matches.push(e1);
+                }
+            }
+        }));
+
+        if (matches.length > 0) {
+            hotdog = true;
+        }
+
+
+        return docRef.set({ id, matches, hotdog, labels })
     });
+

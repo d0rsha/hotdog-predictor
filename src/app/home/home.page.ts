@@ -70,7 +70,7 @@ export class HomePage {
       .then(async url => {
         this.image = this.fsService.getUrl(token) // 'data:image/jpg;base64,' + image;
 
-        this.afs.collection('photos').auditTrail().subscribe(console.log)
+        // this.afs.collection('photos').auditTrail().subscribe(console.log)
 
         // Make a reference to the future location of the firestore document
         const photoRef = this.afs.collection('photos').doc(token);
