@@ -1,5 +1,7 @@
 {
   "name": "visionApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

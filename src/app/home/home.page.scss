@@ -1,1 +1,60 @@
+img {
+    height: 40vh;
+    background-color: beige;
+}
 
+img.error-not-fixed, img.error-fixed{
+    display:inline-block;
+    position:relative;
+    width:128px;
+    height:128px;
+    border:15px solid #fff;
+    border-radius:1px;
+    margin:0px;
+    background:#fff!important;
+    text-indent: -9999px;
+}
+img.error-fixed {
+    background: #CCC !important;
+    text-indent: -9999px;
+    border: 15px solid #fff;
+    color: transparent!important;
+    -webkit-appearance: none!important;
+}
+
+
+.center {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+ion-card-title {
+    text-align: center;
+    text-decoration-color: var(--ion-color-primary);
+}
+
+ion-card-subtitle {
+    text-align: left;
+}
+
+h3 {
+    font-size: 10px;
+}
+
+
+ion-spinner {
+    width: 40px !important;
+    height: 40px !important;
+
+    * {
+      stroke: blue;
+    }
+
+    &.spinner-circles circle,
+    &.spinner-bubbles circle,
+    &.spinner-dots circle {
+      fill: blue;
+    }
+  }
