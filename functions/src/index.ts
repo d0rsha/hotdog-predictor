@@ -43,6 +43,22 @@ export const imageTagger = functions.storage
 
         let hotdog = false;
 
+        const a2: Array<string> = ['vienna sausage', 'falukorv', 'sausage', 'bratwurst', 'varmkorv',];
+        hotdog = labels.some((v: { toLowerCase: () => string; }) => {
+            let b = false;
+
+            a2.forEach(element => {
+                if (element.toLowerCase().includes(v.toLowerCase())) {
+                    b = true;
+                }
+            });
+            return b;
+        }
+        );
+
+
+
+
         const hots = labels.filter((word: { toLowerCase: () => { includes: (arg0: string) => void; }; }) => word.toLowerCase().includes('hot'));
         const dogs = labels.filter((word: { toLowerCase: () => { includes: (arg0: string) => void; }; }) => word.toLowerCase().includes('dog'));
         const matches = Array<string>();
