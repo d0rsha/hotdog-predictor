@@ -21,6 +21,22 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+
+
+      window['FirebasePlugin'].setAnalyticsCollectionEnabled(true); // Enables analytics collection
+      window['FirebasePlugin'].setPerformanceCollectionEnabled(true);
+
+      window['FirebasePlugin'].logEvent('select_content', { content_type: 'page_view', item_id: 'home' });
+
+      window['FirebasePlugin'].startTrace('test',
+        (success: any) => {
+          console.log('create trace "test_trace"', success)
+          // tslint:disable-next-line:no-console
+          console.time('test_trace')
+        },
+        (err: any) => console.error('Could not create trace "test_trace"'))
+      window['FirebasePlugin'].stopTrace('test')
+
     });
   }
 }
