@@ -89,6 +89,7 @@ export class HomePage {
       message: 'Running prediction...',
       duration: 2000
     });
+    loading.present()
     this.progress = true;
     // Convert to base64
     image = this.webview.convertFileSrc(image);
