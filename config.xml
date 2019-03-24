@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="hotdog.starter" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>HotDog</name>
-    <description>An awesome Ionic/Cordova app.</description>
+    <description>An awesome Ionic/Cordova hotdog predictor app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
     <content src="index.html" />
     <access origin="*" />
@@ -44,6 +44,7 @@
         <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
+        <resource-file src="GoogleService-Info.plist" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
         <icon height="57" src="resources/ios/icon/icon.png" width="57" />
@@ -90,6 +91,9 @@
     <plugin name="cordova-plugin-crop" spec="0.4.0" />
     <plugin name="cordova-plugin-firebase" spec="2.0.5" />
     <plugin name="cordova-support-google-services" spec="^1.3.1" />
+    <plugin name="cordova-plugin-firebase-performance" spec="0.1.0">
+        <variable name="FIREBASE_PERF_VERSION" value="16.0.+" />
+    </plugin>
     <engine name="android" spec="7.1.4" />
     <engine name="browser" spec="5.0.4" />
 </widget>
