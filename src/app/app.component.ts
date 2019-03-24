@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  public firebasePlugin = null;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -22,21 +24,20 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
 
+      console.log(window)
 
-      window['FirebasePlugin'].setAnalyticsCollectionEnabled(true); // Enables analytics collection
+      this.firebasePlugin = window['FirebasePlugin'];
+
       window['FirebasePlugin'].setPerformanceCollectionEnabled(true);
+      window['FirebasePlugin'].setAnalyticsCollectionEnabled(true); // Enables analytics collection
 
-      window['FirebasePlugin'].logEvent('select_content', { content_type: 'page_view', item_id: 'home' });
 
-      window['FirebasePlugin'].startTrace('test',
+      // tslint:disable-next-line:no-console
+      console.time('AppInitialized_to_ionViewDidEnter()')
+      window['FirebasePlugin'].startTrace('AppInitialized_to_ionViewDidEnter()',
         (success: any) => {
-          console.log('create trace "test_trace"', success)
-          // tslint:disable-next-line:no-console
-          console.time('test_trace')
         },
         (err: any) => console.error('Could not create trace "test_trace"'))
-      window['FirebasePlugin'].stopTrace('test')
-
     });
   }
 }
